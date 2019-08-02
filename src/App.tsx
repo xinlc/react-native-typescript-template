@@ -1,69 +1,26 @@
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-import Hello from './components/Hello';
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-            <Hello name="World" enthusiasmLevel={1} />
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+// 禁用黄屏
+console.disableYellowBox = true;
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+// 生产环境拦截全局异常，避免出现错误闪退。
+if (!__DEV__) {
+  require('ErrorUtils').setGlobalHandler((err: any) => {
+    console.log(err);
+  });
+}
+
+import React from 'react';
+import { Provider as StoreProvider } from 'react-redux';
+import { Provider as AntdProvider } from '@ant-design/react-native';
+import store from './store';
+import Router from './Router';
+
+const App = () => (
+  <AntdProvider>
+    <StoreProvider store={store}>
+      <Router />
+    </StoreProvider>
+  </AntdProvider>
+);
 
 export default App;
