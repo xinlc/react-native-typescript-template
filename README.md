@@ -24,7 +24,7 @@ react-native run-android
 react-native run-ios
 
 # Build release
-bash scripts/scandroid_build.sh [version] [index] [test|release]
+bash scripts/android_build.sh [version] [index] [test|release]
 ```
 
 ## Debugger

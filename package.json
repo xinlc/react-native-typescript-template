@@ -4,6 +4,9 @@
   "private": false,
   "scripts": {
     "start": "react-native start",
+    "start1": "node scripts/custom-rn-theme && react-native start",
+    "restart": "node scripts/custom-rn-theme && node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "start_8082": "node scripts/custom-rn-theme && node node_modules/react-native/local-cli/cli.js start --port 8082",
     "test": "jest",
     "lint": "eslint ."
   },
