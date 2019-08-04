@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const propTypes = {
   focused: PropTypes.bool,
@@ -16,7 +16,7 @@ const defaultProps = {
 };
 
 // const TabIcon = ({ focused, title, iconName }) => {
-const TabIcon = (props) => {
+const TabIcon = (props: any) => {
   const { focused, tabBarLabel, iconName } = props;
   return (
     <View style={styles.container}>

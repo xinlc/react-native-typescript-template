@@ -18,7 +18,7 @@ const service = axios.create({
 
 // request interceptor
 service.interceptors.request.use(
-  async (config) => {
+  async config => {
     console.log('request -->>> ', config);
     const token = await getToken();
     console.log('token -> ', token);
@@ -27,11 +27,12 @@ service.interceptors.request.use(
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
+      // eslint-disable-next-line require-atomic-updates
       config.headers['X-Authorization'] = token;
     }
     return config;
   },
-  (error) => {
+  error => {
     // do something with request error
     console.log(error); // for debug
     return Promise.reject(error);
@@ -43,14 +44,14 @@ service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
-  */
+   */
 
   /**
    * Determine the request status by custom code
    * Here is just an example
    * You can also judge the status by HTTP Status Code
    */
-  (response) => {
+  response => {
     const res = response.data;
     console.log('response --->>> ', res);
 

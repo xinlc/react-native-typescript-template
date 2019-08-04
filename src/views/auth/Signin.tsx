@@ -9,7 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
   ImageBackground,
-  Platform
+  Platform,
 } from 'react-native';
 import {
   Toast,
@@ -18,13 +18,16 @@ import {
   WhiteSpace,
   WingBlank,
 } from '@ant-design/react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import BackButton from '../../components/BackButton';
 import { Status } from '../../store/actionsTypes';
 import { signIn, resetAuthState, resetAuthStatus } from '../../store/actions';
 
-let loadKey = null;
-const SignInPage = ({ onBack }) => {
+export interface Props {
+  onBack: () => void;
+}
+let loadKey: any = null;
+const SignInPage = ({ onBack }: Props) => {
   const dispatch = useDispatch();
   // const [form, setValues] = useState({
   //   userName: '',
@@ -34,13 +37,16 @@ const SignInPage = ({ onBack }) => {
   const [password, setPassword] = useState('');
   const [seePwd, setSeePwd] = useState(false);
 
-  const status = useSelector(state => state.auth.signInStatus);
-  const errorMessage = useSelector(state => state.auth.signInErrorMessage);
+  const status = useSelector((state: any) => state.auth.signInStatus);
+  const errorMessage = useSelector((state: any) => state.auth.signInErrorMessage);
 
-  useEffect(() => (() => {
-    // componentWillUnmount
-    // dispatch(resetAuthState());
-  }), []);
+  useEffect(
+    () => () => {
+      // componentWillUnmount
+      // dispatch(resetAuthState());
+    },
+    []
+  );
 
   useEffect(() => {
     // handleStatusChange
@@ -75,11 +81,16 @@ const SignInPage = ({ onBack }) => {
   return (
     <ScrollView style={styles.wrapper} keyboardDismissMode="interactive">
       <View style={styles.logoWrapper}>
-        <Image style={styles.logo} source={require('../../assets/images/logo.jpeg')} />
+        <Image
+          style={styles.logo}
+          source={require('../../assets/images/logo.jpeg')}
+        />
       </View>
       <View style={styles.main}>
         <View style={styles.inputWrap}>
-          <Text style={{ color: '#393939', fontSize: 16, width: 85, }}>用户名</Text>
+          <Text style={{ color: '#393939', fontSize: 16, width: 85 }}>
+            用户名
+          </Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setUsername(text)}
@@ -92,7 +103,9 @@ const SignInPage = ({ onBack }) => {
           />
         </View>
         <View style={styles.inputWrap}>
-          <Text style={{ color: '#393939', fontSize: 16, width: 85, }}>密&nbsp;&nbsp;&nbsp;&nbsp;码</Text>
+          <Text style={{ color: '#393939', fontSize: 16, width: 85 }}>
+            密&nbsp;&nbsp;&nbsp;&nbsp;码
+          </Text>
           <TextInput
             style={styles.input}
             onChangeText={text => setPassword(text)}
@@ -103,7 +116,10 @@ const SignInPage = ({ onBack }) => {
             placeholderTextColor="#a6a6a6"
             underlineColorAndroid="transparent"
           />
-          <TouchableOpacity onPress={() => setSeePwd(!seePwd)} style={styles.seePwdBtn}>
+          <TouchableOpacity
+            onPress={() => setSeePwd(!seePwd)}
+            style={styles.seePwdBtn}
+          >
             <Icon
               name={seePwd ? 'eye' : 'eye-slash'}
               size={20}
@@ -121,10 +137,7 @@ const SignInPage = ({ onBack }) => {
         <WingBlank>
           <WhiteSpace size="xl" />
           <WhiteSpace size="xl" />
-          <Button
-            type="primary"
-            onPress={() => onSignInPress()}
-          >
+          <Button type="primary" onPress={() => onSignInPress()}>
             登陆
           </Button>
           <WhiteSpace />
@@ -163,7 +176,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 60,
-    height: 60
+    height: 60,
   },
   main: {
     marginTop: 20,
@@ -174,7 +187,7 @@ const styles = StyleSheet.create({
     height: 52,
     marginLeft: 22,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#E2E2E2'
+    borderBottomColor: '#E2E2E2',
   },
   input: {
     flex: 1,
@@ -216,7 +229,7 @@ const styles = StyleSheet.create({
     width: 80,
     height: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   dynPwdBtn: {
     borderWidth: 0,

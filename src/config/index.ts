@@ -4,15 +4,15 @@
 const BaseConfig = {
   // PROD PROFILE
   /*
-  debug: false,
-  sagaLogger: false,
-  //*/
+    debug: false,
+    sagaLogger: false,
+  // */
 
-  //DEBUG PROFILE
-  //*
+  // DEBUG PROFILE
+  // *
   debug: true,
   sagaLogger: true,
-  //*/
+  // */
 
   appVersion: '0.0.1',
 
@@ -22,8 +22,7 @@ const BaseConfig = {
 
   HttpCode: {
     unauthorized: 40100,
-  }
-
+  },
 };
 
 /**
@@ -32,9 +31,9 @@ const BaseConfig = {
  */
 (() => {
   // console._log = console.log;
-	// if (!__DEV__) {  // React Native中有一个全局变量__DEV__用于指示当前运行环境是否是开发环境。
-	// 	console.log = () => null;
-	// 	console.info = () => null;
+  // if (!__DEV__) {  // React Native中有一个全局变量__DEV__用于指示当前运行环境是否是开发环境。
+  // 	console.log = () => null;
+  // 	console.info = () => null;
   // }
 
   if (!BaseConfig.debug) {

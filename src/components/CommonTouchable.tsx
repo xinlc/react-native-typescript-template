@@ -4,30 +4,37 @@ import Button from 'react-native-button';
 
 const ACTIVE_OPACITY = 0.5;
 
+export interface Props {
+  interval: number;
+  callOnce: boolean;
+  onPress: () => void;
+  style: any;
+}
+
+interface State {}
+
 /**
  * 通用按钮
  * param style
  * param textStyle
  * param buttonTheme
  */
-export default class CommonTouchable extends PureComponent {
-  static propTypes = {
-    interval: PropTypes.number,
-    callOnce: PropTypes.bool,
-  };
+export default class CommonTouchable extends PureComponent<Props, State> {
 
-  static defaultProps = {
+  public static defaultProps = {
     interval: 350,
     callOnce: true, // interval 内 只调用一次，避免用户快速点击出现的种种问题.
-  }
+  };
 
-  constructor(props) {
+  public lastClickTime: number;
+
+  public constructor(props: Props) {
     super(props);
     this.state = {};
     this.lastClickTime = 0;
   }
 
-  _onPress = () => {
+  private _onPress = () => {
     const { interval, callOnce, onPress } = this.props;
     if (!callOnce) {
       onPress();
@@ -35,7 +42,10 @@ export default class CommonTouchable extends PureComponent {
     }
     const clickTime = Date.now();
     // 350 的时间可以延长，根据需要改变
-    if (!this.lastClickTime || Math.abs(this.lastClickTime - clickTime) > interval) {
+    if (
+      !this.lastClickTime ||
+      Math.abs(this.lastClickTime - clickTime) > interval
+    ) {
       this.lastClickTime = clickTime;
       if (onPress) {
         onPress();
@@ -43,7 +53,8 @@ export default class CommonTouchable extends PureComponent {
     }
   };
 
-  render() {
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public render() {
     let { children, style, textStyle, buttonTheme, ...other } = this.props;
     if (buttonTheme && Styles[buttonTheme]) {
       style = [style, Styles[buttonTheme].btn];
@@ -67,31 +78,31 @@ const Styles = {
   default: {
     btn: {
       backgroundColor: '#fff',
-      borderColor: '#fff'
+      borderColor: '#fff',
     },
     text: {
       color: '#fbb307',
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   },
   orange: {
     btn: {
       backgroundColor: '#FED80E',
-      borderColor: '#FED80E'
+      borderColor: '#FED80E',
     },
     text: {
       color: '#393939',
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   },
   gray: {
     btn: {
       backgroundColor: '#f3f3f3',
-      borderColor: '#f3f3f3'
+      borderColor: '#f3f3f3',
     },
     text: {
       color: '#fbb307',
-      fontWeight: 'bold'
-    }
-  }
+      fontWeight: 'bold',
+    },
+  },
 };

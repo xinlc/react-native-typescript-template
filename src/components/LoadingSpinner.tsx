@@ -1,24 +1,23 @@
 import React from 'react';
-import {
-  Dimensions,
-  View,
-  Text,
-  ActivityIndicator
-} from 'react-native';
+import { Dimensions, View, Text, ActivityIndicator } from 'react-native';
 
-const { _width, _height } = Dimensions.get('window');
+const { width: _width, height: _height } = Dimensions.get('window');
 
 const LoadingSpinner = ({
   width,
   height,
   spinnerColor,
   textColor,
-  text
-}) => {
+  text,
+}: any) => {
   return (
-    <View style={{
-      width, height, justifyContent: 'center', alignItems: 'center'
-    }}
+    <View
+      style={{
+        width,
+        height,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
     >
       <ActivityIndicator color={spinnerColor} />
       <View style={{ height: 10 }} />
@@ -34,7 +33,7 @@ LoadingSpinner.defaultProps = {
   height: _height,
   spinnerColor: 'dimgray',
   textColor: 'dimgray',
-  text: ''
+  text: '',
 };
 
 export default LoadingSpinner;

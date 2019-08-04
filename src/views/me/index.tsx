@@ -8,13 +8,14 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
-import {
-  Button,
-} from '@ant-design/react-native';
+import { Button } from '@ant-design/react-native';
 import CommonTouchable from '../../components/CommonTouchable';
 import { logout } from '../../store/actions';
 
-const Page = ({ openSignin }) => {
+export interface Props {
+  openSignin: () => void;
+}
+const Page = ({ openSignin }: Props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,21 +33,21 @@ const Page = ({ openSignin }) => {
         <View style={styles.headerCardWrap}>
           <View style={styles.headerCard}>
             <View style={styles.avatarWrap}>
-              <Image style={styles.avatar} source={require('../../assets/images/logo.jpeg')} />
+              <Image
+                style={styles.avatar}
+                source={require('../../assets/images/logo.jpeg')}
+              />
             </View>
             <CommonTouchable
               onPress={() => openSignin()}
-              style={{ paddingVertical: 20, paddingHorizontal: 30, }}
+              style={{ paddingVertical: 20, paddingHorizontal: 30 }}
             >
               <Text style={{ color: '#777777' }}>去登陆</Text>
             </CommonTouchable>
           </View>
         </View>
-        <View style={{ width: '100%', marginTop: 90, paddingHorizontal: 40, }}>
-          <Button
-            type="primary"
-            onPress={() => _logout()}
-          >
+        <View style={{ width: '100%', marginTop: 90, paddingHorizontal: 40 }}>
+          <Button type="primary" onPress={() => _logout()}>
             注销
           </Button>
         </View>
@@ -90,13 +91,13 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { height: 0, width: 0 },
         shadowOpacity: 0.1,
-        shadowRadius: 3
+        shadowRadius: 3,
       },
       android: {
-        elevation: 5
-      }
-    })
-  }
+        elevation: 5,
+      },
+    }),
+  },
 });
 
 Page.propTypes = {};

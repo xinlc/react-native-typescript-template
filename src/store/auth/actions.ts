@@ -11,7 +11,7 @@ import {
  |--------------------------------------------------
  */
 
-export const signIn = (username, password) => ({
+export const signIn = (username: string, password: string) => ({
   type: API_TYPES.SIGN_IN_REQUEST,
   payload: {
     username,
@@ -19,12 +19,12 @@ export const signIn = (username, password) => ({
   }
 });
 
-export const signUp = payload => ({
+export const signUp = (payload: any) => ({
   type: API_TYPES.SIGN_UP_REQUEST,
   payload,
 });
 
-export const logout = payload => ({
+export const logout = (payload?: any) => ({
   type: AUTH_LOGOUT_SERVICE_TYPE,
   payload,
 });

@@ -22,28 +22,38 @@ const iosOptions = {
   ...defaultOptions,
   maxFiles: 9, // Max number of files to select when using multiple option
   useFrontCamera: false, // Whether to default to the front/'selfie' camera when opened
-  loadingLabelText: '加载中...'
+  loadingLabelText: '加载中...',
 };
 
 const androidOptions = {
   ...defaultOptions,
 };
 
-class CommonImagePicker extends PureComponent {
-  static defaultProps = {
-  }
+export interface Props {
+  name: string;
+  enthusiasmLevel?: number;
+}
 
-  constructor(props) {
+interface State {
+  enthusiasmLevel: number;
+}
+
+class CommonImagePicker extends PureComponent<Props, State> {
+  public static defaultProps = {};
+  public ActionSheet: any;
+  private _takePhotoCB: Function;
+  private _takePhotoOP: any;
+
+  public constructor(props: Props) {
     super(props);
     this._takePhotoCB = Function;
     this._takePhotoOP = {};
-    this.state = {};
   }
 
-  takePhoto(callback, options = {}) {
+  public takePhoto(callback: any, options = {}) {
     const _Options = {
-      ...(Platform.OS == 'ios' ? iosOptions : androidOptions),
-      ...options
+      ...(Platform.OS === 'ios' ? iosOptions : androidOptions),
+      ...options,
     };
     this._takePhotoCB = callback;
     this._takePhotoOP = _Options;
@@ -51,24 +61,26 @@ class CommonImagePicker extends PureComponent {
     this.ActionSheet.show();
   }
 
-  // Response Object
-  // Property	Type	Description
-  // path	string	Selected image location
-  // width	number	Selected image width
-  // height	number	Selected image height
-  // mime	string	Selected image MIME type (image/jpeg, image/png)
-  // size	number	Selected image size in bytes
-  // data	base64	Optional base64 selected file representation
-  _openPicker() {
-    ImagePicker.openPicker(this._takePhotoOP).then((image) => {
+  /**
+   * Response Object
+   * Property	Type	Description
+   * path	string	Selected image location
+   * width	number	Selected image width
+   * height	number	Selected image height
+   * mime	string	Selected image MIME type (image/jpeg, image/png)
+   * size	number	Selected image size in bytes
+   * data	base64	Optional base64 selected file representation
+   */
+  private _openPicker() {
+    ImagePicker.openPicker(this._takePhotoOP).then(image => {
       this._takePhotoCB(image);
     });
   }
 
-  _openCamera() {
-    const {multiple} = this._takePhotoOP;
+  private _openCamera() {
+    const { multiple } = this._takePhotoOP;
     this._takePhotoOP.multiple = false; // android 拍照不能给多选参数
-    ImagePicker.openCamera(this._takePhotoOP).then((image) => {
+    ImagePicker.openCamera(this._takePhotoOP).then(image => {
       if (multiple) {
         this._takePhotoCB([image]); // 多选，返回数组
       } else {
@@ -77,30 +89,35 @@ class CommonImagePicker extends PureComponent {
     });
   }
 
-  _openCropper(options = {}) {
+  private _openCropper(options = {}) {
     const _Options = {
       path: '',
       width: 300,
       height: 400,
-      ...options
+      ...options,
     };
-    ImagePicker.openCropper(_Options).then((image) => {
+    ImagePicker.openCropper(_Options).then(image => {
       console.log('openCropper', image);
     });
   }
 
-  _handleActionSheet(index) {
-    if (index == 1) { // 打开相册
+  private _handleActionSheet(index: number) {
+    if (index === 1) {
+      // 打开相册
       this._openPicker();
-    } else if (index == 2) { // 拍摄
+    } else if (index === 2) {
+      // 拍摄
       this._openCamera();
     }
   }
 
-  render() {
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public render() {
     return (
       <ActionSheet
-        ref={o => (this.ActionSheet = o)}
+        ref={o => {
+          this.ActionSheet = o;
+        }}
         options={['取消', '从手机相册选择', '拍一张照片']}
         cancelButtonIndex={0}
         onPress={this._handleActionSheet.bind(this)}

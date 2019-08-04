@@ -1,11 +1,5 @@
-
 import React from 'react';
-import {
-  BackHandler,
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native';
+import { BackHandler, StyleSheet, View, Text } from 'react-native';
 import {
   Scene,
   Router,
@@ -15,13 +9,10 @@ import {
   Modal,
   Stack,
   ActionConst,
-  Lightbox
+  Lightbox,
 } from 'react-native-router-flux';
 import { StackViewStyleInterpolator } from 'react-navigation-stack';
-import {
-  Toast,
-  Portal,
-} from '@ant-design/react-native';
+import { Toast, Portal } from '@ant-design/react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { CUSTOMER_TOKEN } from './store/actionsTypes';
@@ -173,7 +164,9 @@ const RouterConfig = () => (
             panHandlers={null}
             duration={1}
             back
-            onBack={() => { Actions.pop(); }}
+            onBack={() => {
+              Actions.pop();
+            }}
           />
           <Scene
             key="signup"
@@ -182,7 +175,9 @@ const RouterConfig = () => (
             panHandlers={null}
             duration={1}
             back
-            onBack={() => { Actions.pop(); }}
+            onBack={() => {
+              Actions.pop();
+            }}
           />
         </Stack>
       </Modal>
@@ -216,7 +211,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     alignSelf: 'center',
-  }
+  },
 });
 
 export default RouterConfig;

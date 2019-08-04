@@ -9,4 +9,4 @@ import authSagas from './auth/sagas';
 export default function* root() {
   // yield fork(homeSagas);
   yield fork(authSagas);
-};
+}

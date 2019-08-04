@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export interface Props {
   name: string;
@@ -11,7 +11,7 @@ interface State {
 }
 
 export default class Hello extends React.Component<Props, State> {
-  constructor(props: Props) {
+  public constructor(props: Props) {
     super(props);
 
     if ((props.enthusiasmLevel || 0) <= 0) {
@@ -23,13 +23,11 @@ export default class Hello extends React.Component<Props, State> {
     };
   }
 
-  onIncrement = () =>
-    this.setState({enthusiasmLevel: this.state.enthusiasmLevel + 1});
-  onDecrement = () =>
-    this.setState({enthusiasmLevel: this.state.enthusiasmLevel - 1});
-  getExclamationMarks = (numChars: number) => Array(numChars + 1).join('!');
+  public onIncrement = () => this.setState({ enthusiasmLevel: this.state.enthusiasmLevel + 1 });
+  public onDecrement = () => this.setState({ enthusiasmLevel: this.state.enthusiasmLevel - 1 });
+  public getExclamationMarks = (numChars: number) => Array(numChars + 1).join('!');
 
-  render() {
+  public render() {
     return (
       <View style={styles.root}>
         <Text style={styles.greeting}>

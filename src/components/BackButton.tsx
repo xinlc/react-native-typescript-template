@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 import CommonTouchable from './CommonTouchable';
 import defaultBackImage from '../assets/icon/back-icon.png';
 
-const Comp = ({ onPress, tintColor }) => {
+export interface Props {
+  onPress?: () => void;
+  tintColor?: string;
+}
+const Comp = ({ onPress = () => {}, tintColor }: Props) => {
   return (
     <CommonTouchable style={styles.back} onPress={onPress}>
       <Image
@@ -66,7 +70,7 @@ Comp.propTypes = {
 };
 
 Comp.defaultProps = {
-  onPress: () => {},
+  onPress: () => null,
   tintColor: '#FFFFFF',
 };
 

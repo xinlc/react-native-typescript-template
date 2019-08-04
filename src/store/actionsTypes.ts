@@ -22,7 +22,7 @@ function createRequestTypes(prefix = '', bases, suffixes = suffixTypes) {
 
 // REST API
 
-export const API_TYPES = createRequestTypes('API_TYPE', [
+export const API_TYPES: any = createRequestTypes('API_TYPE', [
   'SIGN_IN', // Sign in already existing user
   'SIGN_UP', // Create new user account
   'CURRENT_USER', // Fetch details of current logged in user
@@ -34,7 +34,7 @@ export const API_TYPES = createRequestTypes('API_TYPE', [
 if (__DEV__) {
   console.log('api----------->', API_TYPES);
   const temp = {};
-  Object.entries(API_TYPES).forEach((arr) => {
+  Object.entries(API_TYPES).forEach((arr: any) => {
     temp[arr[0]] = 'string';
   });
   console.log('api----------->', temp);

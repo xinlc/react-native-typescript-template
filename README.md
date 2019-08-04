@@ -49,6 +49,39 @@ touch rn-cli.config.js
 yarn add --dev @types/react @types/react-native
 ```
 
+## VSCode
+推荐安装：
+- `ESLint`
+- `Prettier`
+- `TabNine`
+- `Reactjs code snippets`
+- `React-Native/React/Redux snippets for es6/es7`
+- `Project Manager`
+- `Search node_modules`
+- `Guides`
+- `Color Highlight`
+- `vscode-icons`
+- `Import Cose`
+
+添加配置如下：
+```json
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ]
+
+}
+```
+
 ## Documents
 - [react-native](https://facebook.github.io/react-native/)
 - [react-native-components](https://facebook.github.io/react-native/docs/view)

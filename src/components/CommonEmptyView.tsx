@@ -22,11 +22,7 @@ const styles = StyleSheet.create({
   }
 });
 
-Component.propTypes = {
-
-};
-Component.defaultProps = {
-
-};
+Component.propTypes = {};
+Component.defaultProps = {};
 
 export default Component;

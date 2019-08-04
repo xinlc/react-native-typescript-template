@@ -1,12 +1,6 @@
-import React, { useState, useEffect, } from 'react';
-import { useSelector, useDispatch, } from 'react-redux';
-import {
-  View,
-  Text,
-  Platform,
-  Dimensions,
-  StyleSheet,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { View, Text, Platform, Dimensions, StyleSheet } from 'react-native';
 import {
   WhiteSpace,
   ListView,
@@ -14,7 +8,7 @@ import {
   Toast,
   Portal,
 } from '@ant-design/react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import moment from 'moment';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import CommonEmptyView from '../../components/CommonEmptyView';
@@ -32,7 +26,7 @@ const Page = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const onFetch = async (page = 1, startFetch, abortFetch) => {
+  const onFetch = async (page = 1, startFetch: any, abortFetch: any) => {
     _abortFetch = abortFetch;
     try {
       setCurrentPage(page);
@@ -41,7 +35,7 @@ const Page = () => {
       let rowData = Array.from({ length: pageLimit }, (value, index) => {
         return {
           id: index,
-          time: moment().format('YYYY-MM-DD hh:mm:ms')
+          time: moment().format('YYYY-MM-DD hh:mm:ms'),
         };
       });
       if (page === 10) {
@@ -54,20 +48,18 @@ const Page = () => {
     }
   };
 
-  const onPressItem = (item) => {
-    console.log(item)
+  const onPressItem = (item: any): void => {
+    console.log(item);
   };
 
   const renderPaginationFetchingView = () => {
     if (currentPage === 1) {
       return null;
     }
-    return (
-      <LoadingSpinner height={HEIGHT * 0.2} text="加载中..." />
-    );
+    return <LoadingSpinner height={HEIGHT * 0.2} text="加载中..." />;
   };
 
-  const renderItem = (item) => {
+  const renderItem = (item: any) => {
     return (
       <CommonTouchable
         style={styles.itemContainer}
@@ -76,7 +68,7 @@ const Page = () => {
         <Flex direction="column" align="start">
           <Flex>
             <Flex.Item>
-              <Text style={{ color: '#131313', }}>{item.time}</Text>
+              <Text style={{ color: '#131313' }}>{item.time}</Text>
             </Flex.Item>
           </Flex>
         </Flex>
@@ -87,18 +79,18 @@ const Page = () => {
   return (
     <View style={styles.container}>
       <ListView
-        ref={ref => listViewRef = ref}
+        ref={ref => { listViewRef = ref }}
         key="list"
         onFetch={onFetch}
         keyExtractor={(item, index) => `${index} - ${item}`}
         refreshableMode="advanced"
         renderItem={renderItem}
         numColumns={1}
-
         // ----Extra Config----
         // header={renderHeader}
         paginationFetchingView={renderPaginationFetchingView}
-        // sectionHeaderView={renderSectionHeaderView}   // not supported on FlatList
+        // not supported on FlatList
+        // sectionHeaderView={renderSectionHeaderView}
         // paginationFetchingView={this.renderPaginationFetchingView}
         // paginationAllLoadedView={this.renderPaginationAllLoadedView}
         // paginationWaitingView={this.renderPaginationWaitingView}
@@ -106,7 +98,9 @@ const Page = () => {
         // separator={renderSeparatorView}
 
         arrowImageStyle={{ width: 20, height: 20, resizeMode: 'contain' }}
-        refreshViewStyle={Platform.OS === 'ios' ? { height: 80, top: -80 } : { height: 80 }}
+        refreshViewStyle={
+          Platform.OS === 'ios' ? { height: 80, top: -80 } : { height: 80 }
+        }
         refreshViewHeight={80}
       />
     </View>
@@ -140,8 +134,8 @@ const styles = StyleSheet.create({
       android: {
         elevation: 5,
       },
-    })
-  }
+    }),
+  },
 });
 
 Page.propTypes = {};

@@ -9,9 +9,10 @@ if (BaseConfig.debug) {
 }
 
 const AUTH_URL = `${API_ROOT_DOMAIN}/v1/system`;
-const Network = {};
 
-Network.API_ROOT_DOMAIN = API_ROOT_DOMAIN;
-Network.API_AUTH_URL = AUTH_URL;
+class Network {
+  public static readonly API_ROOT_DOMAIN = API_ROOT_DOMAIN;
+  public static readonly API_AUTH_URL = AUTH_URL;
+}
 
 export default Network;

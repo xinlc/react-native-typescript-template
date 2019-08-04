@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // TODO: Use KeyboardAvoidingView
-const SignupPage = ({ navigation }) => {
+const SignupPage = () => {
   return (
     <View style={styles.container}>
       <Text>signup</Text>
@@ -13,7 +13,7 @@ const SignupPage = ({ navigation }) => {
 // TODO : Extract common code into a single style
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   defaultMargin: {
     marginTop: 16,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   linkContainer: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   },
   errorText: {
     color: 'red',
@@ -32,11 +32,11 @@ const styles = StyleSheet.create({
   successText: {
     fontSize: 20,
     color: 'green',
-  }
+  },
 });
 
 SignupPage.navigationOptions = {
-  title: 'Signup'
+  title: 'Signup',
 };
 
 export default SignupPage;
