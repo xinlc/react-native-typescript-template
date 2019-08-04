@@ -1,6 +1,8 @@
 
 # react-native-typescript-template
 
+[Getting started guide](https://xinlc.github.io/2019/08/03/front-end/rn/rn-zero-to-one/#more)
+
 ## Installation
 
 ```bash
@@ -38,15 +40,6 @@ adb reverse tcp:8081 tcp:8081
 
 adb shell input keyevent 82
 
-```
-
-## TypeScript
-```bash
-yarn add --dev typescript
-yarn add --dev react-native-typescript-transformer
-yarn tsc --init --pretty --jsx react
-touch rn-cli.config.js
-yarn add --dev @types/react @types/react-native
 ```
 
 ## VSCode
