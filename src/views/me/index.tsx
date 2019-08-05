@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
 Page.propTypes = {};
 Page.defaultProps = {};
 
-export default Page;
+export default React.memo(Page);

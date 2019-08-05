@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
 HomePage.propTypes = {};
 HomePage.defaultProps = {};
 
-export default HomePage;
+export default React.memo(HomePage);

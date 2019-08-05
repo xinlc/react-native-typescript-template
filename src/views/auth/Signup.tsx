@@ -39,4 +39,4 @@ SignupPage.navigationOptions = {
   title: 'Signup',
 };
 
-export default SignupPage;
+export default React.memo(SignupPage);

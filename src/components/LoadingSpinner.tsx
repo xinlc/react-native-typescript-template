@@ -36,4 +36,4 @@ LoadingSpinner.defaultProps = {
   text: '',
 };
 
-export default LoadingSpinner;
+export default React.memo(LoadingSpinner);

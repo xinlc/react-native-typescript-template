@@ -2,7 +2,8 @@ import {
   API_TYPES,
   RESET_AUTH_STATE,
   RESET_AUTH_STATUS,
-  AUTH_LOGOUT_SERVICE_TYPE
+  AUTH_LOGOUT_SERVICE_TYPE,
+  RESET_AUTH_STATUS_TYPE
 } from '../actionsTypes';
 
 /**
@@ -40,6 +41,9 @@ export const resetAuthState = () => ({
   type: RESET_AUTH_STATE,
 });
 
-export const resetAuthStatus = () => ({
+export interface ResetAuthStatusAction {
+  type: RESET_AUTH_STATUS_TYPE;
+}
+export const resetAuthStatus = (): ResetAuthStatusAction => ({
   type: RESET_AUTH_STATUS,
 });

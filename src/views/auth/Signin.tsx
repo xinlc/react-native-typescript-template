@@ -22,6 +22,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import BackButton from '../../components/BackButton';
 import { Status } from '../../store/actionsTypes';
 import { signIn, resetAuthState, resetAuthStatus } from '../../store/actions';
+import IStoreState from '../../store/types';
 
 export interface Props {
   onBack: () => void;
@@ -37,8 +38,8 @@ const SignInPage = ({ onBack }: Props) => {
   const [password, setPassword] = useState('');
   const [seePwd, setSeePwd] = useState(false);
 
-  const status = useSelector((state: any) => state.auth.signInStatus);
-  const errorMessage = useSelector((state: any) => state.auth.signInErrorMessage);
+  const status = useSelector<IStoreState, string>(state => state.auth.signInStatus);
+  const errorMessage = useSelector((state: IStoreState) => state.auth.signInErrorMessage);
 
   useEffect(
     () => () => {
@@ -249,4 +250,4 @@ const styles = StyleSheet.create({
 SignInPage.propTypes = {};
 SignInPage.defaultProps = {};
 
-export default SignInPage;
+export default React.memo(SignInPage);

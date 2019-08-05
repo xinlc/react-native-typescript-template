@@ -74,4 +74,4 @@ Comp.defaultProps = {
   tintColor: '#FFFFFF',
 };
 
-export default Comp;
+export default React.memo(Comp);

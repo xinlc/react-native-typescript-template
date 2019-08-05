@@ -14,7 +14,14 @@ const INITIAL_STATE = {
   signUpErrorMessage: '',
 };
 
-export default (state = INITIAL_STATE, { type, payload }) => {
+export type AUTH_STATE = typeof INITIAL_STATE;
+
+export interface IAction<T = any> {
+  type: string;
+  payload: T;
+}
+
+export default (state = INITIAL_STATE, { type, payload }: IAction) => {
   switch (type) {
     case API_TYPES.SIGN_IN_LOADING:
       return {

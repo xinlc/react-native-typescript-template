@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AuthLoading;
+export default React.memo(AuthLoading);

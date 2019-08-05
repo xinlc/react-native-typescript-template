@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
 TabIcon.propTypes = propTypes;
 TabIcon.defaultProps = defaultProps;
 
-export default TabIcon;
+export default React.memo(TabIcon);

@@ -6,7 +6,7 @@ import rootSaga from './sagas';
 import BaseConfig from '../config';
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const middlewares: any = [sagaMiddleware];
 
 
 // if (process.env.NODE_ENV === 'development') {
