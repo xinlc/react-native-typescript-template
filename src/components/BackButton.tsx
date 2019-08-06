@@ -12,7 +12,7 @@ export interface Props {
   onPress?: () => void;
   tintColor?: string;
 }
-const Comp = ({ onPress = () => {}, tintColor }: Props) => {
+const Comp = ({ onPress, tintColor }: Props) => {
   return (
     <CommonTouchable style={styles.back} onPress={onPress}>
       <Image
@@ -64,10 +64,15 @@ const styles = StyleSheet.create({
 });
 
 
-Comp.propTypes = {
-  onPress: PropTypes.func,
-  tintColor: PropTypes.string,
-};
+// Comp.propTypes = {
+//   onPress: PropTypes.func,
+//   tintColor: PropTypes.string,
+// };
+
+// Comp.defaultProps = {
+//   onPress: () => null,
+//   tintColor: '#FFFFFF',
+// } as Partial<Props>;
 
 Comp.defaultProps = {
   onPress: () => null,

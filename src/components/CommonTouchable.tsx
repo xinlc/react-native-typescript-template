@@ -4,12 +4,27 @@ import Button from 'react-native-button';
 
 const ACTIVE_OPACITY = 0.5;
 
-export interface Props {
-  interval: number;
-  callOnce: boolean;
-  onPress: () => void;
-  style: any;
-}
+const defaultProps = {
+  interval: 350,
+  callOnce: true, // interval 内 只调用一次，避免用户快速点击出现的种种问题.
+  onPress: () => {}
+};
+
+// export interface Props {
+//   interval?: number;
+//   callOnce?: boolean;
+//   onPress?: () => void;
+//   style?: any;
+// }
+
+type Props = {
+  interval?: number;
+  callOnce?: boolean;
+  onPress?: () => void;
+  style?: any;
+  textStyle?: any;
+  buttonTheme?: 'default' | 'orange' | 'gray';
+} & typeof defaultProps;
 
 interface State {}
 
@@ -21,10 +36,7 @@ interface State {}
  */
 export default class CommonTouchable extends PureComponent<Props, State> {
 
-  public static defaultProps = {
-    interval: 350,
-    callOnce: true, // interval 内 只调用一次，避免用户快速点击出现的种种问题.
-  };
+  public static defaultProps = defaultProps;
 
   public lastClickTime: number;
 
@@ -106,3 +118,50 @@ const Styles = {
     },
   },
 };
+
+
+// 解决 ts 不能识别类组件defaultProps问题(函数组件没有问题)
+
+// 1.
+// type Props = {
+//   foo?: string;
+//   bar: string;
+// } & typeof defaultProps; // <-- give the type of const defaultProps
+
+// const defaultProps = { foo: 'foo!' }
+
+// export default class FooBar extends Component<Props> {
+//   public static defaultProps = defaultProps;
+//   public render() {
+//     const foo = this.props.foo;
+//     const bar = this.props.bar;
+//     return <Text>{`${foo} ${bar}`}</Text>;
+//   }
+// }
+
+// 2.
+// type defaultProps = Required<Pick<Props, 'foo'>>;
+
+// // implement the type
+// const defaultProps: defaultProps = {
+//   foo: 'foo!'
+// };
+// // Note: you can also use Object.freeze:
+// const defaultPropsFreezed = Object.freeze<defaultProps>({
+//   foo: 'foo!'
+// })
+
+// class FooBar extends Component<Props & defaultProps> {
+
+
+// 3.
+// type defaultProps = Required<Pick<Props, 'foo'>>;
+// const defaultProps = Object.freeze<defaultProps>({
+//   foo: 'foo!'
+// })
+
+// export default class FooBar extends Component<Props> {
+//   public static defaultProps = defaultProps;
+//   private get dProps() {
+//     return this.props as Props & defaultProps;
+//   }
