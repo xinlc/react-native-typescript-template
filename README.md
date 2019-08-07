@@ -86,6 +86,7 @@ adb shell input keyevent 82
 - [redux-cn](https://www.redux.org.cn)
 - [react-redux-cn](http://cn.redux.js.org/docs/react-redux/)
 - [react-redux](https://react-redux.js.org/)
+- [redux-actions](https://github.com/redux-utilities/redux-actions)
 - [redux-sage](https://redux-saga-in-chinese.js.org)
 - [TypeScript](https://github.com/microsoft/TypeScript)
 - [TypeSearch](https://github.com/Microsoft/TypeSearch)

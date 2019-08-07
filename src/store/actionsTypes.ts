@@ -21,9 +21,6 @@ export const API_TYPES: any = createRequestTypes('API_TYPE', [
   'SIGN_IN', // Sign in already existing user
   'SIGN_UP', // Create new user account
   'CURRENT_USER', // Fetch details of current logged in user
-  'STORAGE_LIST', // 采购计划列表
-  'STORAGE_DETAIL', // 采购计划详情
-  'STORAGE_PUT_IN_STORAGE', // 入库
 ], suffixTypes);
 
 if (__DEV__) {
