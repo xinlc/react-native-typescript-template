@@ -3,11 +3,6 @@ const LOADING = 'LOADING';
 const SUCCESS = 'SUCCESS';
 const FAILURE = 'FAILURE';
 
-const STATUS_DEFAULT = 'NOT_STARTED';
-const STATUS_LOADING = 'LOADING';
-const STATUS_SUCCESS = 'SUCCESS';
-const STATUS_ERROR = 'ERROR';
-
 const suffixTypes = [REQUEST, LOADING, SUCCESS, FAILURE];
 
 function createRequestTypes(prefix = '', bases, suffixes = suffixTypes) {
@@ -40,9 +35,15 @@ if (__DEV__) {
   console.log('api----------->', temp);
 }
 
-export const Status = Object.freeze({
-  STATUS_DEFAULT, STATUS_LOADING, STATUS_SUCCESS, STATUS_ERROR
-});
+// export const Status = Object.freeze({
+//   STATUS_DEFAULT, STATUS_LOADING, STATUS_SUCCESS, STATUS_ERROR
+// });
+export enum Status {
+  STATUS_DEFAULT,
+  STATUS_LOADING,
+  STATUS_SUCCESS,
+  STATUS_ERROR,
+}
 
 export const CUSTOMER_TOKEN = 'CUSTOMER_TOKEN';
 

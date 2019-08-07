@@ -38,7 +38,7 @@ const SignInPage = ({ onBack }: Props) => {
   const [password, setPassword] = useState('');
   const [seePwd, setSeePwd] = useState(false);
 
-  const status = useSelector<IStoreState, string>(state => state.auth.signInStatus);
+  const status = useSelector<IStoreState, Status>(state => state.auth.signInStatus);
   const errorMessage = useSelector((state: IStoreState) => state.auth.signInErrorMessage);
 
   useEffect(

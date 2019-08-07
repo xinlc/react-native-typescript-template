@@ -37,6 +37,11 @@ interface State {}
 export default class CommonTouchable extends PureComponent<Props, State> {
 
   public static defaultProps = defaultProps;
+  // public static defaultProps: Partial<Props> = {
+  //   interval: 350,
+  //   callOnce: true, // interval 内 只调用一次，避免用户快速点击出现的种种问题.
+  //   onPress: () => {},
+  // }
 
   public lastClickTime: number;
 
