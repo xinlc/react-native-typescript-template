@@ -25,4 +25,5 @@ const styles = StyleSheet.create({
 Component.propTypes = {};
 Component.defaultProps = {};
 
-export default React.memo(Component);
+// export default React.memo(Component);
+export default Component;

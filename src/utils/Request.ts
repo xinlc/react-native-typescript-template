@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import Network from '../config/Network';
 import BaseConfig from '../config';
-import { CUSTOMER_TOKEN } from '../store/actionsTypes';
+import { CUSTOMER_TOKEN } from '../config/Constants';
 
 const getToken = async () => {
   const customerToken = await AsyncStorage.getItem(CUSTOMER_TOKEN);

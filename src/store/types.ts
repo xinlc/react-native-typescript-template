@@ -1,5 +1,4 @@
-import { AUTH_STATE } from './auth/reducer';
+import { ReturnState } from 'iron-redux';
+import { rootReducers } from './reducers';
 
-export default interface IStoreState {
-  auth: AUTH_STATE;
-}
+export type RootState = ReturnState<typeof rootReducers>;

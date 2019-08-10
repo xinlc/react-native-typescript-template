@@ -1,77 +1,32 @@
 import {
-  API_TYPES, Status,
-  ACTION_USER_LOGOUT,
-  RESET_AUTH_STATE,
-  RESET_AUTH_STATUS
-} from '../actionsTypes';
+  AsyncTuple,
+  ActionType,
+} from 'iron-redux';
+import { Types, prefix } from './types';
+import actions, { FetchSignInRes } from './actions';
 
-const INITIAL_STATE = {
-  signInStatus: Status.STATUS_DEFAULT,
-  signUpStatus: Status.STATUS_DEFAULT,
-  token: '',
-
-  signInErrorMessage: '',
-  signUpErrorMessage: '',
-};
-
-export type AUTH_STATE = typeof INITIAL_STATE;
-
-export interface IAction<T = any> {
-  type: string;
-  payload: T;
+// 1、复杂的属性可以尽量写些注释，方便调用的时候可以辨识
+// 2、使用 AsyncTuple 来管理异步获取的数据. InitialState 里不要有各种 loading、error 字段
+// 3、将 initial state 命名为 State，这样可以同时产生 state 的初始值以及 state 的类型定义。
+const fetchSignIn = new AsyncTuple<FetchSignInRes>(false);
+class State {
+  public token = '';
+  public fetchSignIn = fetchSignIn;
 }
 
-export default (state = INITIAL_STATE, { type, payload }: IAction) => {
-  switch (type) {
-    case API_TYPES.SIGN_IN_LOADING:
-      return {
-        ...state,
-        signInStatus: Status.STATUS_LOADING,
-        signInErrorMessage: '',
-      };
-    case API_TYPES.SIGN_IN_SUCCESS:
-      return {
-        ...state,
-        signInStatus: Status.STATUS_SUCCESS,
-      };
-    case API_TYPES.SIGN_IN_FAILURE:
-      return {
-        ...state,
-        signInStatus: Status.STATUS_ERROR,
-        signInErrorMessage: payload.errorMessage
-      };
-    case API_TYPES.SIGN_UP_LOADING:
-      return {
-        ...state,
-        signUpStatus: Status.STATUS_LOADING,
-        signUpErrorMessage: '',
-      };
-    case API_TYPES.SIGN_UP_SUCCESS:
-      return {
-        ...state,
-        signUpStatus: Status.STATUS_SUCCESS,
-      };
-    case API_TYPES.SIGN_UP_FAILURE:
-      return {
-        ...state,
-        signUpStatus: Status.STATUS_ERROR,
-        signUpErrorMessage: payload.errorMessage,
-      };
-    case API_TYPES.CURRENT_USER_SUCCESS:
-      return {
-        ...state,
-        token: payload.token,
-      };
-    case ACTION_USER_LOGOUT:
-    case RESET_AUTH_STATE:
-      return INITIAL_STATE;
-    case RESET_AUTH_STATUS:
-      return {
-        ...state,
-        signInStatus: Status.STATUS_DEFAULT,
-        signUpStatus: Status.STATUS_DEFAULT,
-      };
-    default:
-      return state;
+/**
+ * reducer
+ */
+export default (
+  state = new State(),
+  action: ActionType<typeof actions>
+): State => {
+  switch (action.type) {
+    case Types.clearFetchSignIn: {
+      return { ...state, fetchSignIn };
+    }
+    default: {
+      return AsyncTuple.handleAll(prefix, state, action);
+    }
   }
 };

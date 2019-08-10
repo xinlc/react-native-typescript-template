@@ -1,35 +1,17 @@
 import {
-  API_TYPES,
-  RESET_AUTH_STATE,
-  RESET_AUTH_STATUS,
-  AUTH_LOGOUT_SERVICE_TYPE,
-  RESET_AUTH_STATUS_TYPE
-} from '../actionsTypes';
-
-/**
- |--------------------------------------------------
- | DEFINE SERVICE ACTION INTERFACE
- |--------------------------------------------------
- */
-
-export const signIn = (username: string, password: string) => ({
-  type: API_TYPES.SIGN_IN_REQUEST,
-  payload: {
-    username,
-    password
-  }
-});
-
-export const signUp = (payload: any) => ({
-  type: API_TYPES.SIGN_UP_REQUEST,
-  payload,
-});
-
-export const logout = (payload?: any) => ({
-  type: AUTH_LOGOUT_SERVICE_TYPE,
-  payload,
-});
-
+  composeTypes,
+  createAction,
+  ActionCreator,
+  AsyncTuple,
+  NO_ERROR_TYPES,
+  createFetchAction,
+  ThunkAction,
+  ActionType,
+  safeGet,
+  Method,
+} from 'iron-redux';
+import Network from '../../config/Network';
+import { Types } from './types';
 
 /**
  |--------------------------------------------------
@@ -37,13 +19,33 @@ export const logout = (payload?: any) => ({
  |--------------------------------------------------
  */
 
-export const resetAuthState = () => ({
-  type: RESET_AUTH_STATE,
-});
+const changeToken = createAction(Types.changeToken, 'token')<string>();
 
-export interface ResetAuthStatusAction {
-  type: RESET_AUTH_STATUS_TYPE;
+interface FetchSignInParams {
+  loginName: string;
+  userPass: string;
 }
-export const resetAuthStatus = (): ResetAuthStatusAction => ({
-  type: RESET_AUTH_STATUS,
-});
+export interface FetchSignInRes {
+  data: string;
+}
+const fetchSignInUrl = `${Network.API_AUTH_URL}/login`;
+const fetchSignIn = createFetchAction(Types.fetchSignIn, fetchSignInUrl, Method.Post)<FetchSignInParams, FetchSignInRes>('fetchSignIn');
+const clearFetchSignIn = createAction(Types.clearFetchSignIn)();
+export default {
+  changeToken,
+  fetchSignIn,
+  clearFetchSignIn,
+};
+
+/**
+ |--------------------------------------------------
+ | DEFINE SERVICE ACTION INTERFACE
+ |--------------------------------------------------
+ */
+
+interface SignInParams {
+  username: string;
+  password: string;
+}
+export const signIn = createAction(Types.signIn)<SignInParams>();
+export const logout = createAction(Types.logout)();

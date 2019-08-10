@@ -4,22 +4,20 @@ import { View, StyleSheet } from 'react-native';
 import { WingBlank, WhiteSpace, Button } from '@ant-design/react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AsyncStorage from '@react-native-community/async-storage';
+import { RootState } from '../../store/types';
 import List from './List';
-import { CUSTOMER_TOKEN } from '../../store/actionsTypes';
+import { CUSTOMER_TOKEN } from '../../config/Constants';
 
 export interface Props {
   openSignin: () => {};
 }
 const HomePage = ({ openSignin }: Props) => {
   const dispatch = useDispatch();
-  const token = useSelector((state: any) => state.auth.token);
+  const token = useSelector((state: RootState) => state.auth.token);
   const [currentToken, setCurrentToken] = useState<string | null>(null);
 
   useEffect(() => {
     // 切换用户情况，重新刷新列表
-    // if (token && listViewRef) {
-    //   listViewRef.refresh();
-    // }
     setCurrentToken(token);
   }, [token]);
 

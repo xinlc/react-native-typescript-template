@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { AsyncTuple } from 'iron-redux';
 import {
   View,
   Text,
@@ -20,9 +21,9 @@ import {
 } from '@ant-design/react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BackButton from '../../components/BackButton';
-import { Status } from '../../store/actionsTypes';
-import { signIn, resetAuthState, resetAuthStatus } from '../../store/actions';
-import IStoreState from '../../store/types';
+// import { Status } from '../../store/actionsTypes';
+import actions, { signIn } from '../../store/auth/actions';
+import { RootState } from '../../store/types';
 
 export interface Props {
   onBack: () => void;
@@ -38,32 +39,30 @@ const SignInPage = ({ onBack }: Props) => {
   const [password, setPassword] = useState('');
   const [seePwd, setSeePwd] = useState(false);
 
-  const status = useSelector<IStoreState, Status>(state => state.auth.signInStatus);
-  const errorMessage = useSelector((state: IStoreState) => state.auth.signInErrorMessage);
-
+  const fetchSignIn = useSelector((state: RootState) => state.auth.fetchSignIn);
   useEffect(
     () => () => {
       // componentWillUnmount
-      // dispatch(resetAuthState());
+      dispatch(actions.clearFetchSignIn());
     },
     []
   );
 
   useEffect(() => {
     // handleStatusChange
-    if (status === Status.STATUS_LOADING) {
+    if (fetchSignIn.loading) {
       loadKey = Toast.loading('登录中...', 0);
     } else {
       loadKey && Portal.remove(loadKey);
     }
-    if (status === Status.STATUS_ERROR) {
-      Toast.fail(errorMessage);
+    if (fetchSignIn.error) {
+      Toast.fail(fetchSignIn.message || '');
       // dispatch(resetAuthStatus());
     }
-    if (status === Status.STATUS_SUCCESS) {
+    if (fetchSignIn.data) {
       onBack();
     }
-  }, [status]);
+  }, [fetchSignIn]);
 
   const onSignInPress = () => {
     if (!username) {
@@ -76,7 +75,7 @@ const SignInPage = ({ onBack }: Props) => {
       Toast.info('请输入密码');
       return;
     }
-    dispatch(signIn(username, password));
+    dispatch(signIn({ username, password }));
   };
 
   return (

@@ -15,7 +15,7 @@ import { StackViewStyleInterpolator } from 'react-navigation-stack';
 import { Toast, Portal } from '@ant-design/react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { CUSTOMER_TOKEN } from './store/actionsTypes';
+import { CUSTOMER_TOKEN } from './config/Constants';
 import { callOnceInInterval } from './utils/Common';
 
 import RNComponents from './components/RN-components';

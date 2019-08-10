@@ -13,7 +13,6 @@ import moment from 'moment';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import CommonEmptyView from '../../components/CommonEmptyView';
 import CommonTouchable from '../../components/CommonTouchable';
-import { Status } from '../../store/actionsTypes';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 

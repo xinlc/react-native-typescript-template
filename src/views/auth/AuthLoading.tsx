@@ -7,10 +7,9 @@ import {
   WhiteSpace,
   Button,
 } from '@ant-design/react-native';
-
 import AsyncStorage from '@react-native-community/async-storage';
-
-import { CUSTOMER_TOKEN } from '../../store/actionsTypes';
+import { RootState } from '../../store/types';
+import { CUSTOMER_TOKEN } from '../../config/Constants';
 
 export interface Props {
   onSuccess: () => {};
@@ -18,7 +17,7 @@ export interface Props {
 }
 const AuthLoading = ({ onSuccess, onFailure }: Props) => {
   const [token, setToken] = useState<string|null>(null);
-  const tk = useSelector((state: any) => state.auth.token);
+  const tk = useSelector((state: RootState) => state.auth.token);
 
   useEffect(() => {
     bootstrapAsync();
