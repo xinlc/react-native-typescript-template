@@ -76,6 +76,7 @@ adb shell input keyevent 82
 ```
 
 ## Documents
+- [react](https://reactjs.org/)
 - [react-native](https://facebook.github.io/react-native/)
 - [react-native-components](https://facebook.github.io/react-native/docs/view)
 - [react-native-router-flux](https://github.com/aksonov/react-native-router-flux)

@@ -23,12 +23,21 @@ import TabIcon from './components/TabIcon';
 import BackButton from './components/BackButton';
 
 import AuthLoading from './views/auth/AuthLoading';
-import Signin from './views/auth/Signin';
+// import Signin from './views/auth/Signin';
 import Signup from './views/auth/Signup';
-
 import Home from './views/home';
-
 import Me from './views/me';
+
+// 按需加载
+const SigninComponent = React.lazy(() => import('./views/auth/Signin'));
+// const Signup = React.lazy(() => import('./views/auth/Signup'));
+// const Home = React.lazy(() => import('./views/home'));
+// const Me = React.lazy(() => import('./views/me'));
+const Signin = (...rest: any) => (
+  <React.Suspense fallback={<Text>Loading...</Text>}>
+    <SigninComponent {...rest} />
+  </React.Suspense>
+);
 
 // https://github.com/aksonov/react-native-router-flux/issues/2741
 // https://github.com/react-navigation/react-navigation/issues/1759
