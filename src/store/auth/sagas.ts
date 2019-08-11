@@ -1,19 +1,18 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { ActionType } from 'iron-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Types } from './types';
 import actions, { signIn, logout } from './actions';
 import { fetchService } from '../fetchService';
 import { CUSTOMER_TOKEN } from '../../config/Constants';
 
-function* signInService(action: ActionType<typeof signIn>) {
+function* signInService(action: ReturnType<typeof signIn>) {
   const { payload } = action;
   try {
-    const fsi = actions.fetchSignIn({
+    const api = actions.fetchSignIn({
       loginName: payload.username,
       userPass: payload.password
     });
-    const res: typeof fsi.payload = yield* fetchService(fsi);
+    const res: typeof api.payload = yield* fetchService(api);
     if (res) {
       const { data: token } = res;
       yield AsyncStorage.setItem(CUSTOMER_TOKEN, token);
@@ -25,7 +24,7 @@ function* signInService(action: ActionType<typeof signIn>) {
   }
 }
 
-function* logoutService(action: ActionType<typeof logout>) {
+function* logoutService(action: ReturnType<typeof logout>) {
   try {
     yield AsyncStorage.removeItem(CUSTOMER_TOKEN);
     yield put(actions.changeToken(''));
