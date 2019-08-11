@@ -4,9 +4,10 @@
   "private": false,
   "scripts": {
     "start": "react-native start",
-    "start1": "node scripts/custom-rn-theme && react-native start",
+    "start:theme": "node scripts/custom-rn-theme && react-native start",
     "restart": "node scripts/custom-rn-theme && node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "start_8082": "node scripts/custom-rn-theme && node node_modules/react-native/local-cli/cli.js start --port 8082",
+    "start:8082": "node scripts/custom-rn-theme && node node_modules/react-native/local-cli/cli.js start --port 8082",
+    "start:packager": "yarn react-native start --config packager/config.js",
     "tsc": "tsc",
     "test": "jest",
     "lint": "eslint .",

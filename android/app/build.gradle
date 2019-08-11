@@ -78,6 +78,12 @@ import com.android.build.OutputFile
 project.ext.react = [
     entryFile: "index.js",
     enableHermes: false,  // clean and rebuild if changing
+    bundleCommand: "ram-bundle",
+    // extraPackagerArgs: ["--indexed-ram-bundle"]
+    // entryFile: "index.js" // Leo: js 入口 默认 index.android.js
+    // bundleCommand: "unbundle"
+    // extraPackagerArgs: ["--indexed-unbundle"]
+    // bundleConfig: "packager/config.js // 不需要在这里配置，新版本在metro.config.js里配置
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
