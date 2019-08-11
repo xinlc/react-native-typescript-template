@@ -9,6 +9,7 @@ import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => App);
 
 // 多bundle下查看有多少模块已经加载，有多少模块在等待。
+// loaded Module 应放入 packager/modulePaths.js 中进行预加载，减少require造成额外的开销。
 if (__DEV__) {
   const modules = require.getModules();
   const moduleIds = Object.keys(modules);
