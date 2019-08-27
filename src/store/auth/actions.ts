@@ -19,9 +19,8 @@ import { Types } from './types';
  |--------------------------------------------------
  */
 
-const changeToken = createAction(Types.changeToken, 'token')<string>();
-
-interface FetchSignInParams {
+// 登录
+interface FetchSignInReq {
   loginName: string;
   userPass: string;
 }
@@ -29,8 +28,13 @@ export interface FetchSignInRes {
   data: string;
 }
 const fetchSignInUrl = `${Network.API_AUTH_URL}/login`;
-const fetchSignIn = createFetchAction(Types.fetchSignIn, fetchSignInUrl, Method.Post)<FetchSignInParams, FetchSignInRes>('fetchSignIn');
+const fetchSignIn = createFetchAction(Types.fetchSignIn, fetchSignInUrl, Method.Post)<FetchSignInReq, FetchSignInRes>('fetchSignIn');
+
+// 清空登录 fetch state
 const clearFetchSignIn = createAction(Types.clearFetchSignIn)();
+
+// change token
+const changeToken = createAction(Types.changeToken, 'token')<string>();
 export default {
   changeToken,
   fetchSignIn,
@@ -49,3 +53,10 @@ interface SignInParams {
 }
 export const signIn = createAction(Types.signIn)<SignInParams>();
 export const logout = createAction(Types.logout)();
+
+// interface GetUsersParams {
+//   page: number;
+//   limit: number;
+//   callback: (res: FetchUsersRes) => any;
+// }
+// export const getUsers = createAction(Types.getUsers)<GetUsersParams>()

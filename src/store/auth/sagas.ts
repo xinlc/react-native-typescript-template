@@ -29,7 +29,7 @@ function* logoutService(action: ReturnType<typeof logout>) {
     yield AsyncStorage.removeItem(CUSTOMER_TOKEN);
     yield put(actions.changeToken(''));
   } catch (error) {
-    console.log(error);
+    console.log('service', error);
   }
 }
 

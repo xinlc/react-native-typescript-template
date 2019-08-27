@@ -11,6 +11,7 @@
     "tsc": "tsc",
     "test": "jest",
     "lint": "eslint .",
+    "lint:ts": "eslint . src/**/*.ts src/**/*.tsx",
     "tslint": "tslint --project . src/**/*.ts src/**/*.tsx"
   },
   "dependencies": {
