@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { RootState } from '../../store/types';
 import List from './List';
 import { CUSTOMER_TOKEN } from '../../config/Constants';
+import { getUserInfo } from '../../store/auth/actions';
 
 export interface Props {
   openSignin: () => {};
@@ -24,7 +25,14 @@ const HomePage = ({ openSignin }: Props) => {
   useEffect(() => {
     // componentDidMount
     // dispatch(initializeApp());
-    isLoggedIn();
+
+    // 验证是否登录
+    isLoggedIn().then((isLogged) => {
+      // 获取用户信息
+      if (isLogged) {
+        dispatch(getUserInfo());
+      }
+    });
 
     // 延迟关闭闪屏, 体验更好
     setTimeout(() => {
@@ -37,7 +45,9 @@ const HomePage = ({ openSignin }: Props) => {
     setCurrentToken(token);
     if (!token) {
       openSignin();
+      return false;
     }
+    return true;
   };
 
   if (currentToken) {

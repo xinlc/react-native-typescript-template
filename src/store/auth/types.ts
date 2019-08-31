@@ -20,11 +20,13 @@ enum BasicTypes {
   signIn,
   logout,
   clearFetchSignIn,
+  getUserInfo,
 }
 
 enum FetchTypes {
   fetchSignIn,
-  userInfo,
+  fetchLogout,
+  fetchUserInfo,
 }
 
 const Types = composeTypes({

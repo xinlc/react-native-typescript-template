@@ -88,6 +88,11 @@ const isLoggedIn = async () => {
 //   );
 // };
 
+// Actions.popTo('home');
+// Actions.replace('home');
+// tab 跳转请使用jump
+// Actions.jump('home')
+
 const RouterConfig = () => (
   <Router
     sceneStyle={styles.scene}

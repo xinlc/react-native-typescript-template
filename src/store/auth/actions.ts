@@ -30,6 +30,24 @@ export interface FetchSignInRes {
 const fetchSignInUrl = `${Network.API_AUTH_URL}/login`;
 const fetchSignIn = createFetchAction(Types.fetchSignIn, fetchSignInUrl, Method.Post)<FetchSignInReq, FetchSignInRes>('fetchSignIn');
 
+// 注销
+interface FetchLogoutReq {
+}
+export interface FetchLogoutRes {
+}
+const fetchLogoutUrl = `${Network.API_AUTH_URL}/logout`;
+const fetchLogout = createFetchAction(Types.fetchLogout, fetchLogoutUrl, Method.Post)<FetchLogoutReq, FetchLogoutRes>('fetchLogout');
+
+// 获取用户信息
+interface FetchUserInfoReq {
+}
+export interface FetchUserInfoRes {
+  name: string;
+}
+const fetchUserInfoUrl = `${Network.API_AUTH_URL}/userInfo`;
+const fetchUserInfo = createFetchAction(Types.fetchUserInfo, fetchUserInfoUrl, Method.Get)<FetchUserInfoReq, FetchUserInfoRes>('fetchUserInfo');
+
+
 // 清空登录 fetch state
 const clearFetchSignIn = createAction(Types.clearFetchSignIn)();
 
@@ -39,6 +57,8 @@ export default {
   changeToken,
   fetchSignIn,
   clearFetchSignIn,
+  fetchLogout,
+  fetchUserInfo
 };
 
 /**
@@ -52,7 +72,10 @@ interface SignInParams {
   password: string;
 }
 export const signIn = createAction(Types.signIn)<SignInParams>();
+
 export const logout = createAction(Types.logout)();
+
+export const getUserInfo = createAction(Types.getUserInfo)();
 
 // interface GetUsersParams {
 //   page: number;

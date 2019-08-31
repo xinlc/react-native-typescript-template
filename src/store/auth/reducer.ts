@@ -3,7 +3,7 @@ import {
   ActionType,
 } from 'iron-redux';
 import { Types, prefix } from './types';
-import actions, { FetchSignInRes } from './actions';
+import actions, { FetchSignInRes, FetchUserInfoRes } from './actions';
 
 // 1、复杂的属性可以尽量写些注释，方便调用的时候可以辨识
 // 2、使用 AsyncTuple 来管理异步获取的数据. InitialState 里不要有各种 loading、error 字段
@@ -11,9 +11,13 @@ import actions, { FetchSignInRes } from './actions';
 // 4、命名规范：API 前缀加 fetch
 
 const fetchSignIn = new AsyncTuple<FetchSignInRes>(false);
+const fetchLogout = new AsyncTuple(false);
+const fetchUserInfo = new AsyncTuple<FetchUserInfoRes>(false);
 class State {
   public token = '';
   public fetchSignIn = fetchSignIn;
+  public fetchLogout = fetchLogout;
+  public fetchUserInfo = fetchUserInfo;
 }
 
 /**

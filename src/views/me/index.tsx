@@ -11,12 +11,19 @@ import {
 import { Button } from '@ant-design/react-native';
 import CommonTouchable from '../../components/CommonTouchable';
 import { logout } from '../../store/actions';
+import { RootState } from '../../store/types';
 
 export interface Props {
   openSignin: () => void;
 }
 const Page = ({ openSignin }: Props) => {
   const dispatch = useDispatch();
+
+  const fetchUserInfo = useSelector((state: RootState) => state.auth.fetchUserInfo);
+  let name = null;
+  if (fetchUserInfo.data) {
+    name = fetchUserInfo.data.name;
+  }
 
   useEffect(() => {
     // componentDidMount
@@ -38,18 +45,28 @@ const Page = ({ openSignin }: Props) => {
                 source={require('../../assets/images/logo.jpeg')}
               />
             </View>
-            <CommonTouchable
-              onPress={() => openSignin()}
-              style={{ paddingVertical: 20, paddingHorizontal: 30 }}
-            >
-              <Text style={{ color: '#777777' }}>去登陆</Text>
-            </CommonTouchable>
+            {
+              name === null ? (
+                <CommonTouchable
+                  onPress={() => openSignin()}
+                  style={{ paddingVertical: 20, paddingHorizontal: 30 }}
+                >
+                  <Text style={{ color: '#777777' }}>去登陆</Text>
+                </CommonTouchable>
+              ) : (
+                <Text style={{ color: '#777777' }}>{name}</Text>
+              )
+            }
           </View>
         </View>
         <View style={{ width: '100%', marginTop: 90, paddingHorizontal: 40 }}>
-          <Button type="primary" onPress={() => _logout()}>
-            注销
-          </Button>
+          {
+            name !== null ? (
+              <Button type="primary" onPress={() => _logout()}>
+                注销
+              </Button>
+            ) : null
+          }
         </View>
       </ScrollView>
     </View>
