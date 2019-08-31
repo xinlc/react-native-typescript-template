@@ -13,6 +13,7 @@ import moment from 'moment';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import CommonEmptyView from '../../components/CommonEmptyView';
 import CommonTouchable from '../../components/CommonTouchable';
+import { RootState } from '../../store/types';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window');
 
@@ -23,7 +24,36 @@ const Page = () => {
   let listViewRef: any = null;
   const dispatch = useDispatch();
 
+  // const fetchList = useSelector((state: RootState) => state.list.fetchList);
+  // const lastRefreshTime = useSelector((state: RootState) => state.list.listLastRefreshTime);
+
   const [currentPage, setCurrentPage] = useState(1);
+
+  // useEffect(() => {
+  //   // handleStatusChang
+  //   if (fetchList.loading) {
+  //     if (currentPage === 1) {
+  //       _loadKey = Toast.loading('加载中...', 0);
+  //     }
+  //   } else {
+  //     _loadKey && Portal.remove(_loadKey);
+  //   }
+  //   if (fetchList.error) {
+  //     Toast.fail(fetchList.message || '');
+  //     if (_abortFetch) {
+  //       _abortFetch();
+  //     }
+  //   }
+  //   if (fetchList.data) {
+  //     // onBack();
+  //   }
+  // }, [fetchList]);
+
+  // useEffect(() => {
+  //   if (listViewRef) {
+  //     listViewRef.refresh();
+  //   }
+  // }, [lastRefreshTime]);
 
   const onFetch = async (page = 1, startFetch: any, abortFetch: any) => {
     _abortFetch = abortFetch;

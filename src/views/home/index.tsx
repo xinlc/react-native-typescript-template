@@ -20,6 +20,9 @@ const HomePage = ({ openSignin }: Props) => {
   useEffect(() => {
     // 切换用户情况，重新刷新列表
     setCurrentToken(token);
+
+    // TODO: 需要触发列表更新，列表页
+    // dispatch(actions.changeListLastRefreshTime(Date.now()));
   }, [token]);
 
   useEffect(() => {
