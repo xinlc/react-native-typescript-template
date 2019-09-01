@@ -19,8 +19,9 @@ export interface Props {
 const Page = ({ openSignin }: Props) => {
   const dispatch = useDispatch();
 
+  const token = useSelector((state: RootState) => state.auth.token);
   const fetchUserInfo = useSelector((state: RootState) => state.auth.fetchUserInfo);
-  let name = null;
+  let name = '';
   if (fetchUserInfo.data) {
     name = fetchUserInfo.data.name;
   }
@@ -46,7 +47,7 @@ const Page = ({ openSignin }: Props) => {
               />
             </View>
             {
-              name === null ? (
+              !token ? (
                 <CommonTouchable
                   onPress={() => openSignin()}
                   style={{ paddingVertical: 20, paddingHorizontal: 30 }}
@@ -61,7 +62,7 @@ const Page = ({ openSignin }: Props) => {
         </View>
         <View style={{ width: '100%', marginTop: 90, paddingHorizontal: 40 }}>
           {
-            name !== null ? (
+            token ? (
               <Button type="primary" onPress={() => _logout()}>
                 注销
               </Button>

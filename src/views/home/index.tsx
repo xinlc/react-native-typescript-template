@@ -8,6 +8,7 @@ import { RootState } from '../../store/types';
 import List from './List';
 import { CUSTOMER_TOKEN } from '../../config/Constants';
 import { getUserInfo } from '../../store/auth/actions';
+import { initializeApp } from '../../store/app/actions';
 
 export interface Props {
   openSignin: () => {};
@@ -27,7 +28,8 @@ const HomePage = ({ openSignin }: Props) => {
 
   useEffect(() => {
     // componentDidMount
-    // dispatch(initializeApp());
+    // 初始化 app 相关
+    dispatch(initializeApp());
 
     // 验证是否登录
     isLoggedIn().then((isLogged) => {
