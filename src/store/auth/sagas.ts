@@ -32,13 +32,11 @@ function* signInService(action: ReturnType<typeof signIn>) {
 function* logoutService(action: ReturnType<typeof logout>) {
   const loadKey = Toast.loading('加载中...', 0);
   try {
-    // 先执行清空本地
-    yield AsyncStorage.removeItem(CUSTOMER_TOKEN);
-    yield put(actions.changeToken(''));
-
     const api = actions.fetchLogout();
     const res: typeof api.payload = yield* fetchService(api);
     if (res) {
+      yield AsyncStorage.removeItem(CUSTOMER_TOKEN);
+      yield put(actions.changeToken(''));
       Portal.remove(loadKey);
       Toast.success('已注销', 1.5);
     }
