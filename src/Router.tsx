@@ -178,9 +178,8 @@ const RouterConfig = () => (
             panHandlers={null}
             duration={1}
             back
-            onBack={() => {
-              Actions.pop();
-            }}
+            onBack={() => { Actions.pop() }}
+            onBackToHome={() => { Actions.jump('home') }}
           />
           <Scene
             key="signup"

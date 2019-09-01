@@ -27,9 +27,10 @@ import { RootState } from '../../store/types';
 
 export interface Props {
   onBack: () => void;
+  onBackToHome: () => void;
 }
 let _loadKey: any = null;
-const SignInPage = ({ onBack }: Props) => {
+const SignInPage = ({ onBack, onBackToHome }: Props) => {
   const dispatch = useDispatch();
   // const [form, setValues] = useState({
   //   userName: '',
@@ -61,7 +62,8 @@ const SignInPage = ({ onBack }: Props) => {
       // dispatch(resetAuthStatus());
     }
     if (fetchSignIn.data) {
-      onBack();
+      // onBack();
+      onBackToHome();
     }
   }, [fetchSignIn]);
 
