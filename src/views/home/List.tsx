@@ -33,6 +33,7 @@ const Page = () => {
   //   // handleStatusChang
   //   if (fetchList.loading) {
   //     if (currentPage === 1) {
+  //       _loadKey && Portal.remove(_loadKey);
   //       _loadKey = Toast.loading('加载中...', 0);
   //     }
   //   } else {

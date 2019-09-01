@@ -28,7 +28,7 @@ import { RootState } from '../../store/types';
 export interface Props {
   onBack: () => void;
 }
-let loadKey: any = null;
+let _loadKey: any = null;
 const SignInPage = ({ onBack }: Props) => {
   const dispatch = useDispatch();
   // const [form, setValues] = useState({
@@ -51,9 +51,10 @@ const SignInPage = ({ onBack }: Props) => {
   useEffect(() => {
     // handleStatusChange
     if (fetchSignIn.loading) {
-      loadKey = Toast.loading('登录中...', 0);
+      _loadKey && Portal.remove(_loadKey);
+      _loadKey = Toast.loading('登录中...', 0);
     } else {
-      loadKey && Portal.remove(loadKey);
+      _loadKey && Portal.remove(_loadKey);
     }
     if (fetchSignIn.error) {
       Toast.fail(fetchSignIn.message || '');
