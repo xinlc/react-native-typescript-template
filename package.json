@@ -12,7 +12,8 @@
     "test": "jest",
     "lint": "eslint .",
     "lint:ts": "eslint . src/**/*.ts src/**/*.tsx",
-    "tslint": "tslint --project . src/**/*.ts src/**/*.tsx"
+    "tslint": "tslint --project . src/**/*.ts src/**/*.tsx",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/YourAppName/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
     "@ant-design/icons-react-native": "1.0.2",

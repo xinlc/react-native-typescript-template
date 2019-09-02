@@ -1,6 +1,7 @@
 /**
  * Created by Leo on 19/7/17.
  */
+/* eslint-disable */
 const BaseConfig = {
   // PROD PROFILE
   /*
@@ -9,7 +10,7 @@ const BaseConfig = {
   // */
 
   // DEBUG PROFILE
-  // *
+  //*
   debug: true,
   sagaLogger: true,
   // */
@@ -36,15 +37,16 @@ const BaseConfig = {
   // 	console.info = () => null;
   // }
 
-  if (!BaseConfig.debug) {
-    global.console = {
-      info: () => {},
-      log: () => {},
-      warn: () => {},
-      debug: () => {},
-      error: () => {},
-    };
-  }
+  // 不要使用这个，release 不好用，使用 transform-remove-console 插件代替
+  // if (!BaseConfig.debug) {
+  //   global.console = {
+  //     info: () => {},
+  //     log: () => {},
+  //     warn: () => {},
+  //     debug: () => {},
+  //     error: () => {},
+  //   };
+  // }
 })();
 
 export default Object.freeze(BaseConfig);
