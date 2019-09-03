@@ -1,5 +1,9 @@
 /**
- * @format
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:29:18
+ * @modify date 2019-09-03 10:29:18
+ * @desc RN 注册 App 入口
  */
 
 import { AppRegistry } from 'react-native';

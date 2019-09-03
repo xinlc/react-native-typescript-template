@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:58:14
+ * @modify date 2019-09-03 09:58:14
+ * @desc App Saga, 业务处理
+ */
 import { takeLatest, call, put } from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Types } from './types';

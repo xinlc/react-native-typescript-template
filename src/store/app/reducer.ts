@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:57:58
+ * @modify date 2019-09-03 09:57:58
+ * @desc App State
+ */
 import {
   AsyncTuple,
   ActionType,

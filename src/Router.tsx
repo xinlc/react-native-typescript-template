@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:28:51
+ * @modify date 2019-09-03 10:28:51
+ * @desc App 路由声明配置
+ */
 import React from 'react';
 import { BackHandler, StyleSheet, View, Text } from 'react-native';
 import {

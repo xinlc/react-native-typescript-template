@@ -1,6 +1,7 @@
 
 /**
  * See https://juejin.im/post/5b07caf16fb9a07aa83f2977
+ * TypeScript 2.8下的终极React组件模式 （未完善）
  * @param defaultProps 
  * @param Cmp 
  * @example

@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:06:50
+ * @modify date 2019-09-03 10:06:50
+ * @desc 通用工具类
+ */
 
 const sleep = (time: number) => new Promise(resolve => setTimeout(() => resolve(), time));
 

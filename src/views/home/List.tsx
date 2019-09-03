@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:09:28
+ * @modify date 2019-09-03 10:09:28
+ * @desc List Demo
+ */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, Platform, Dimensions, StyleSheet } from 'react-native';

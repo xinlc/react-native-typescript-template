@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:07:01
+ * @modify date 2019-09-03 10:07:01
+ * @desc 请求工具类，配置 axios
+ */
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 import Network from '../config/Network';

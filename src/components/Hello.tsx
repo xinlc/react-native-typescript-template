@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:50:23
+ * @modify date 2019-09-03 09:50:23
+ * @desc Hello 组件
+ */
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 

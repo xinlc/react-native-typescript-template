@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:00:55
+ * @modify date 2019-09-03 10:00:55
+ * @desc Auth state
+ */
 import {
   AsyncTuple,
   ActionType,

@@ -1,3 +1,11 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:28:23
+ * @modify date 2019-09-03 10:28:23
+ * @desc App 入口
+ */
+
 // 禁用黄屏
 console.disableYellowBox = true;
 

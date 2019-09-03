@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:49:49
+ * @modify date 2019-09-03 09:49:49
+ * @desc 相册选择组件
+ */
 import React, { PureComponent } from 'react';
 import { Platform } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';

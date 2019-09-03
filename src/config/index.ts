@@ -1,6 +1,11 @@
 /**
- * Created by Leo on 19/7/17.
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-07-17 09:52:50
+ * @modify date 2019-09-03 09:52:50
+ * @desc App 配置类
  */
+
 /* eslint-disable */
 const BaseConfig = {
   // PROD PROFILE

@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:50:00
+ * @modify date 2019-09-03 09:50:00
+ * @desc 通用可点击容器
+ */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-native-button';

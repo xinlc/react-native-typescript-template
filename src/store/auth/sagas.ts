@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:01:12
+ * @modify date 2019-09-03 10:01:12
+ * @desc Auth Api请求，业务处理。
+ */
 import { takeLatest, call, put } from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Toast, Portal } from '@ant-design/react-native';

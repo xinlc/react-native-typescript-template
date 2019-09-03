@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 10:07:25
+ * @modify date 2019-09-03 10:07:25
+ * @desc 登录验证 （未用到，在首页做控制）
+ */
 import React, { useState, useEffect } from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';

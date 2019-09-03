@@ -1,11 +1,13 @@
-
-/*eslint-disable */
-
-/** 
- * 自定义 ant-design 主题样式
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:53:53
+ * @modify date 2019-09-03 09:53:53
+ * @desc 自定义 ant-design 主题样式 (注意不要使用TS, 使用node执行)
  * https://github.com/ant-design/antd-mobile-samples/tree/master/rn-custom-ui#antd-mobile-with-rn-custom-ui
  */
 
+/*eslint-disable */
 Object.defineProperty(exports, '__esModule', {
   value: true
 });

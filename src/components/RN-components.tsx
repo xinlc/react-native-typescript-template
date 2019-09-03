@@ -1,9 +1,10 @@
 /**
- * Sample React Native App
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:51:03
+ * @modify date 2019-09-03 09:51:03
+ * @desc Sample React Native App
  * https://github.com/facebook/react-native
- *
- * @format
- * @flow
  */
 
 import React, { Fragment } from 'react';

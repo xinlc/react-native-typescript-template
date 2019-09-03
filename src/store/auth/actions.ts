@@ -1,3 +1,10 @@
+/**
+ * @author Leo
+ * @email xinlichao2016@gmail.com
+ * @create date 2019-09-03 09:59:48
+ * @modify date 2019-09-03 09:59:48
+ * @desc 定义 Auth Api, Saga action, reducer action等。
+ */
 import {
   composeTypes,
   createAction,
