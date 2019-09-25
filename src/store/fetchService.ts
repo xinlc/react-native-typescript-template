@@ -48,6 +48,9 @@ export function* fetchService(action: any, loading: boolean = true, success: boo
       // token 失效或未登录
       if (res.code === 0) {
 
+        // 通知这次调用失败
+        yield put({ type: types.error, url, stateKey, payload: { message: '您的登录状态已失效' }});
+
         // 手动关闭 alert, 避免弹出多个请求
         // https://github.com/ant-design/ant-design-mobile-rn/issues/524
         Portal.remove(portal.nextKey - 1);
